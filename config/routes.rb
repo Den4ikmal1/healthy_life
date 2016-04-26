@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :coaches
   devise_for :users, controllers: { registrations: 'registrations' }
+  root 'static_pages#home'
   
 
   # The priority is based upon order of creation: first created -> highest priority.
