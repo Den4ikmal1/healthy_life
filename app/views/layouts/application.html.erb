@@ -13,14 +13,9 @@
 
       <div class="navbar-header">
         <div class="logo">
-          
-        </div>
+          HealthyLife
+       </div>
       </div>
-
-      <ul class="nav navbar-nav">
-         <%= link_to "sign in as user", new_user_session_path, class: "btn btn-link"  %>
-         <%= link_to "sign in as coach", new_coach_session_path, class: "btn btn-link"  %>
-      </ul>
       
       <ul class="nav navbar-nav navbar-right">
 
@@ -28,19 +23,35 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sign up<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <div class="user-panel">
-           <% if user_signed_in? %>
-              <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "btn btn-link"  %>
-          <% else %>
-              <%= link_to "Sign up as user", new_user_registration_path, class: "btn btn-link"  %> 
-          <% end %>
-           <% if coach_signed_in? %>
-              <%= link_to "Sign out", destroy_coach_session_path, :method => :delete, class: "btn btn-link"  %>
-          <% else %>
-              <%= link_to "Sign up as coach", new_coach_registration_path, class: "btn btn-link"  %> 
-          <% end %>
+              <% if user_signed_in? %>
+                <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "btn btn-link"  %>
+                <% if current_user.type.nil? %>
+                <%= link_to "View profile", user_profile_path(current_user), class: "btn btn-link" %>
+                
+
+                <% end %>
+              <% else %>
+                <% unless user_signed_in? || coach_signed_in? %>
+                  <%= link_to "Sign up as user", new_user_registration_path, class: "btn btn-link"  %> 
+                  <%= link_to "Sign up as coach", new_coach_registration_path, class: "btn btn-link"  %> 
+                <% end %>
+              <% end %>
+              <% if coach_signed_in? %>
+                <%= link_to "Sign out", destroy_coach_session_path, :method => :delete, class: "btn btn-link" %>
+              <% end %>
           </div> 
           </ul>
         </li>
+        <% unless user_signed_in? || coach_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sign in<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <ul class="nav navbar-nav">
+                    <%= link_to "sign in", new_user_session_path, class: "btn btn-link"  %>
+                </ul>
+              </ul>
+          </li>
+        <% end %>
         
       </ul>
 

@@ -17,7 +17,48 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@mixin background-tile {
+  box-sizing: border-box;
+  background-color: #ccd9ff;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  padding: 1.5em 1.25em;
+}
 body {
   margin-top: 70px;
   background-color: #fff; 
+}
+.logo{
+    a {
+      text-decoration: none;
+      color: #505050;
+    }
+    font-size: 33px;
+    color: #505050;
+    font-family: 'Bree Serif', serif;
+
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+}
+
+.btn-custom {
+  color: darken(#f1c40f, 5%);
+  background-color: #fff;
+  border: 1px solid darken(#EECBAD, 5%);
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-family: 'Ubuntu', sans-serif;
+  &:hover {
+    text-decoration: none;
+    background-color: darken(#EECBAD, 5%);
+    color: #fff;
+    transition: 0.5s;
+  }
+}
+
+.new-form {
+  @include background-tile;
+  margin: 40px 0 40px 0;
 }

@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
+  devise_for :users
   devise_for :coaches
-  devise_for :users, controllers: { registrations: 'registrations' }
+  resources :users, :coaches, only: [:show] do
+    resources :personal_characteristics
+  end
+  get ':id' => 'users#show', as: :user_profile
+  get ':id' => 'coaches#show', as: :coach_profile
+
+
+
+
+  
   root 'static_pages#home'
   
 

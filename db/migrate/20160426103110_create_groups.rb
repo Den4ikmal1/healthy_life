@@ -5,7 +5,6 @@ class CreateGroups < ActiveRecord::Migration
       t.references :coach, foreign_key: true
       t.timestamps null: false
     end
-    drop_table :coaches_users
     add_index :groups, [:user_id, :coach_id]
   end
 end

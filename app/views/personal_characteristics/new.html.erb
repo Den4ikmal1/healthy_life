@@ -1,0 +1,33 @@
+<h3>Введите следующте необходимые индивидуальные параметры:</h3>
+  <%= simple_form_for([@user, @user.personal_characteristics.build]) do |f| %>
+    <div class="row">
+    <div class="col-md-4">
+      <h4>Введите  значения для определения индекса Руфье:</h4>
+      <div class="new-form"><br>
+      <%= f.simple_fields_for :rufe_index do |setting| %>
+        <%= setting.input :p1, label: "Пульс до ", input_html: { value: '20'} %>
+        <%= setting.input :p2, label: "Пульс во время ", input_html: { value: '20'} %>
+        <%= setting.input :p3, label: "Пульс после ", input_html: { value: '20'}%>
+      <% end %>
+      </div>
+  
+  <h4>Введите значения для индексов масы тела и уровня метаболлизма:</h4>
+    <div class="new-form">
+      <%= f.simple_fields_for :weight_index do |setting| %>
+        <%= setting.input :weight, label: "Вес ", input_html: { value: '50'}  %>
+        <%= setting.input :growth, label: "Рост", input_html: { value: '150'}  %>
+        <%= setting.input :age, label: "Возраст",input_html: { value: '10'}  %>
+        <%= setting.input :activity, label: "Повседневная активность", collection: PersonalCharacteristic::ACTIVITY_TYPES, prompt: "Выберите ваше значение", as: :select %>
+      <% end %>
+      </div>
+  <div class="container text-center">
+    <%= f.button :submit, :class => "btn-custom" %>
+  </div> 
+  <div class="col-md-4 col-md-offset-4"></div>
+
+  </div>
+  <% end %>
+  </div>
+
+   
+
