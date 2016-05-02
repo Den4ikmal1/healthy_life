@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160501220701) do
+ActiveRecord::Schema.define(version: 20160502093838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160501220701) do
     t.integer  "coach_id"
   end
 
-  add_index "groups", ["user_id", "coach_id"], name: "index_groups_on_user_id_and_coach_id", using: :btree
+  add_index "groups", ["coach_id"], name: "index_groups_on_coach_id", using: :btree
 
   create_table "personal_characteristics", force: :cascade do |t|
     t.integer  "user_id"
@@ -68,5 +68,8 @@ ActiveRecord::Schema.define(version: 20160501220701) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "groups", "users"
+  add_foreign_key "groups", "users", column: "coach_id"
   add_foreign_key "personal_characteristics", "users"
+  add_foreign_key "personal_characteristics", "users", column: "coach_id"
+  add_foreign_key "users", "users", column: "coach_id"
 end

@@ -2,6 +2,7 @@ class PersonalCharacteristic < ActiveRecord::Base
   belongs_to :user
   belongs_to :coach
   ACTIVITY_TYPES = ["low_activity", "small_activity", "normal_activity", "greater_activity"]
+  attr_accessor :my_field
 
 
 
