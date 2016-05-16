@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   devise_for :coaches
-  resources :users, :coaches, only: [:show] do
+  resources :users, :coaches, only: [:show, :edit, :update] do
     resources :personal_characteristics
   end
+  resources :groups
+
   get ':id' => 'users#show', as: :user_profile
   get ':id' => 'coaches#show', as: :coach_profile
 

@@ -1,0 +1,6 @@
+<h3>Редактирование группы текущего пользователя</h3>
+<%= simple_form_for( @user) do |f|%>
+    <%= f.error_notification %>
+  <%= select_tag(:group_id, options_for_select(@groups), :prompt => "Выберите группу") %>
+  <%= f.button :submit %>
+<% end %>

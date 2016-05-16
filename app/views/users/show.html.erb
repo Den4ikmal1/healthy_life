@@ -1,4 +1,9 @@
 <h3><%= @user.last_name %> <%= @user.first_name %></h3>
 <h3><%= @user.gender %></h3>
+
+<%= content_tag :div, "", id: "user_wight", data: { index:  @test }%>
+<div id="annual"></div><br>
 <%= render "shared/personal_data", parent: @user %>
-<%= link_to "New Test", new_user_personal_characteristic_path(@user), :class => 'btn-custom' %>
+<%= link_to "Пройти новое тестирование", new_user_personal_characteristic_path(@user), :class => 'btn btn-primary' %>
+<%= link_to "Редактировать группу пользователя", edit_user_path(@user) , :class => 'btn btn-warning' %>
+<%= link_to "Edit", edit_user_registration_path(current_user) , :class => 'btn-custom' %>

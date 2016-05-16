@@ -9,8 +9,9 @@
         <%= setting.input :p2, label: "Пульс во время ", input_html: { value: '20'} %>
         <%= setting.input :p3, label: "Пульс после ", input_html: { value: '20'}%>
       <% end %>
+
       </div>
-  
+    
   <h4>Введите значения для индексов масы тела и уровня метаболлизма:</h4>
     <div class="new-form">
       <%= f.simple_fields_for :weight_index do |setting| %>
@@ -20,11 +21,18 @@
         <%= setting.input :activity, label: "Повседневная активность", collection: PersonalCharacteristic::ACTIVITY_TYPES, prompt: "Выберите ваше значение", as: :select %>
       <% end %>
       </div>
-  <div class="container text-center">
+      <div class="container text-center">
     <%= f.button :submit, :class => "btn-custom" %>
   </div> 
-  <div class="col-md-4 col-md-offset-4"></div>
-
+    
+  </div>
+  <div id="lol">
+  <div class="col-md-6"><br>
+    <div class="new-form">
+    <br> <h3>Правила тестирования:</h3>
+      После пятиминутного спокойного состояния в положении сидя считается пульс за пятнадцать секунд (р1), затем в протяжении сорока пяти секунд выполняется тридцать приседаний. Сразу после приседаний подсчитывается пульс за первые пятнадцать секунд (р2) a также последние пятнадцать секунд (р3) первой минуты периода отдыха. 
+    </div>   
+  </div>
   </div>
   <% end %>
   </div>

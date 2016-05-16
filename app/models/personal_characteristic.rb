@@ -1,8 +1,9 @@
 class PersonalCharacteristic < ActiveRecord::Base
   belongs_to :user
   belongs_to :coach
-  ACTIVITY_TYPES = ["low_activity", "small_activity", "normal_activity", "greater_activity"]
-  attr_accessor :my_field
+  
+  ACTIVITY_TYPES = ["Низкая_активность", "Небольшая_активность", "Средне_статистическа_активность", "Высокая_активность"]
+  
 
 
 
@@ -37,31 +38,31 @@ class PersonalCharacteristic < ActiveRecord::Base
 
   def self.get_status_rufe
     status = {
-      0..5                   => "good",
-      5.1..10                => "normal",
-      10..15                 => "satisfactorily",
-      15.1..Float::INFINITY  => "bad"
+      0..5                   => "Хорошо",
+      5.1..10                => "Нормально",
+      10..15                 => "Удовлетворительно",
+      15.1..Float::INFINITY  => "Плохо"
     } 
   end
 
   def self.get_status_weight
     status = {
-      0..16                  => "severe underweight",
-      16.1..18.5             => "underweight",
-      18.5..24.99            => "normal",
-      25..30                 => "overweight",
-      30..35                 => "obesity_first_degree",
-      35..40                 => "obesity_seconf_degree",
-      35..Float::INFINITY    => "obesity_third_degree"
+      0..16                  => "Анорексия",
+      16.1..18.5             => "Дефицит_массы_тела",
+      18.5..24.99            => "Норма",
+      25..30                 => "Избыток_массы_тела",
+      30..35                 => "Первая_стадия_ожирения",
+      35..40                 => "Вторая_стадия_ожирения",
+      35..Float::INFINITY    => "Третья_стадия_ожирения"
     } 
   end
 
   def self.get_status_activity
     status = {
-      "low_activity"         => 1.2,
-      "small_activity"       => 1.38,
-      "normal_activity"      => 1.55,
-      "greater_activity"     => 1.73
+      "Низкая_активность"                => 1.2,
+      "Небольшая_активность"             => 1.38,
+      "Средне_статистическа_активность"  => 1.55,
+      "Высокая_активность"               => 1.73
     } 
   end 
 
@@ -74,6 +75,11 @@ class PersonalCharacteristic < ActiveRecord::Base
   def self.find_status(obtained_statuses, parametr)
     obtained_statuses.select { |val| val === parametr }.values.first
   end
+
+  private
+
+ 
+
 end
   
 

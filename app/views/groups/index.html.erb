@@ -1,0 +1,16 @@
+<table class="table table-bordered table-striped">
+      <tr>
+        <th>Название</th>
+        <th>Дата создания </th>
+        <th>Дата обновления</th>
+        <th>Удаление группы</th>
+      </tr>
+<% @groups.each do |f| %>
+  <tr>
+    <td><h4><%= link_to "#{f.title}", group_path(f) %></h4></td>
+    <td><h4><%= f.created_at.strftime("%d %b.%Y") %></h4></td>
+    <td><h4><%= f.updated_at.strftime("%d %b.%Y") %></h4></td>
+    <td><h4><%= button_to "Удалить группу", f, method: :delete, class: "btn btn-danger" %></h4></td>
+  </tr>
+<% end %>
+</table>

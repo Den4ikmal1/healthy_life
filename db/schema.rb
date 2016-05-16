@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160502093838) do
+ActiveRecord::Schema.define(version: 20160515174619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
   create_table "groups", force: :cascade do |t|
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "coach_id"
+    t.string   "title"
   end
 
   add_index "groups", ["coach_id"], name: "index_groups_on_coach_id", using: :btree
@@ -61,13 +61,14 @@ ActiveRecord::Schema.define(version: 20160502093838) do
     t.string   "gender"
     t.string   "position"
     t.string   "type"
+    t.integer  "group_id"
   end
 
   add_index "users", ["coach_id"], name: "index_users_on_coach_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["group_id"], name: "index_users_on_group_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "groups", "users"
   add_foreign_key "groups", "users", column: "coach_id"
   add_foreign_key "personal_characteristics", "users"
   add_foreign_key "personal_characteristics", "users", column: "coach_id"

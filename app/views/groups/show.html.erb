@@ -1,0 +1,16 @@
+<table class="table table-bordered table-striped">
+      <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Должность</th>
+        <th>Пол</th>
+      </tr>
+<% @group.users.each do |user|  %>
+  <tr>
+    <td><h4><%= link_to "#{user.last_name}", user %></td>
+    <td><h4><%= user.first_name %></h4></td>
+    <td><h4><%= user.position %></h4></td>
+    <td><h4><%= user.gender %></h4></td>
+  </tr>
+<% end %>
+</table>

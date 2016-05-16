@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require bxslider
 //= require bootstrap-sprockets
+//= require raphael
+//= require morris
 //= require_tree .

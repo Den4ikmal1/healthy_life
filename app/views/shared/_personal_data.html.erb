@@ -1,16 +1,16 @@
 <table class="table table-bordered table-striped">
       <tr>
 
-        <th>Date:</th>
-        <th>Test Rufe</th>
-        <th>Weight index </th>
-        <th>Metabolism index</th>
+        <th>Дата проведения теста</th>
+        <th>Индекс Руфье</th>
+        <th>Индекс массы тела </th>
+        <th>Индекс метаболизма</th>
       </tr>
       <tr>
         <th></th>
-        <th>Value / Name</th>
-        <th>Value / Name</th>
-        <th>Value</th>
+        <th>Значение / Состояние</th>
+        <th>Значение / Состояние</th>
+        <th>Значение</th>
       </tr>
 <% parent.personal_characteristics.each do |p| %>
   <tr>
@@ -21,4 +21,3 @@
   </tr>
 <% end %>
 </table>
-<%= link_to "Edit", edit_user_registration_path(parent) , :class => 'btn-custom' %>

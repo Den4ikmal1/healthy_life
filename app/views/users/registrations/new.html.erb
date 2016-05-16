@@ -1,24 +1,24 @@
 
 <div class="col-md-6 col-md-offset-3">
-  <h2>Sign up</h2>
+  <h2>Регистрация</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :first_name, required: true, autofocus: true %>
-      <%= f.input :last_name, required: true, autofocus: true %>
-      <%= f.label :gender, "Gender:" %><br>
-      <%= f.radio_button :gender, "Female" %> <%= f.label :gender, "Female" %>
-      <%= f.radio_button :gender, "Male" %> <%= f.label :gender, "Male" %>
-      <%= f.input :position, required: true, autofocus: true %>
-      <%= f.input :email, required: true, autofocus: true %>
-      <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-      <%= f.input :password_confirmation, required: true %>
+      <%= f.input :first_name, required: true, autofocus: true, label: "Имя" %>
+      <%= f.input :last_name, required: true, autofocus: true, label: "Фамилия" %>
+      <%= f.label :gender, "Пол:" %><br>
+      <%= f.radio_button :gender, "Female" %> <%= f.label :gender, "Женский" %>
+      <%= f.radio_button :gender, "Male" %> <%= f.label :gender, "Мужской" %>
+      <%= f.input :position, required: true, autofocus: true, label: "Должность"%>
+      <%= f.input :email, required: true, autofocus: true, label: "Электронная почта"%>
+      <%= f.input :password, required: true, hint: ("#{@minimum_password_length} минимум количиство" if @minimum_password_length), label: "Пароль" %>
+      <%= f.input :password_confirmation, required: true, label: "Подтверждение пароля" %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
+      <%= f.button :submit, "Зарегестрироваться" %>
     </div>
   <% end %>
 
