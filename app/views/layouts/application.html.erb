@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>HealthyLife</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -27,7 +28,7 @@
               <% if user_signed_in? %>
                 <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "btn btn-link"  %>
                 <% if current_user.type.nil? %>
-                <%= link_to "View profile", user_profile_path(current_user), class: "btn btn-link" %>
+                <%= link_to "View profile", user_path(current_user), class: "btn btn-link" %>
                 
 
                 <% end %>
@@ -63,7 +64,9 @@
 
 <div class="container">  
 <%= yield %>
-</div>
+</div><br>
+
+  <div class="panel-footer">Healthy Life</div>
 
 </body>
 </html>

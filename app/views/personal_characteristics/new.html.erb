@@ -21,9 +21,7 @@
         <%= setting.input :activity, label: "Повседневная активность", collection: PersonalCharacteristic::ACTIVITY_TYPES, prompt: "Выберите ваше значение", as: :select %>
       <% end %>
       </div>
-      <div class="container text-center">
-    <%= f.button :submit, :class => "btn-custom" %>
-  </div> 
+    <%= f.button :submit, "Отправить параметры", :class => "btn btn-success" %> 
     
   </div>
   <div id="lol">
@@ -31,7 +29,8 @@
     <div class="new-form">
     <br> <h3>Правила тестирования:</h3>
       После пятиминутного спокойного состояния в положении сидя считается пульс за пятнадцать секунд (р1), затем в протяжении сорока пяти секунд выполняется тридцать приседаний. Сразу после приседаний подсчитывается пульс за первые пятнадцать секунд (р2) a также последние пятнадцать секунд (р3) первой минуты периода отдыха. 
-    </div>   
+    </div> 
+
   </div>
   </div>
   <% end %>

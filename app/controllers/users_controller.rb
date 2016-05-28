@@ -3,9 +3,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   
   def show
-    @test = @user.personal_characteristics 
+    @test = @user.personal_characteristics
+    @c = []
+    @test.each { |k,v| @c << k.weight_index}
     @groups = Group.find_each.map{ |c| [c.title, c.id]}
-    
   end
 
   def edit

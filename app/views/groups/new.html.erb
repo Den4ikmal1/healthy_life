@@ -2,14 +2,17 @@
     <%= f.error_notification %>
       <div class="col-md-4">
           <div class="new-point">
-            <%= f.input :title %>
+            <%= f.input :title, label: "Название" %>
           <%= f.simple_fields_for :groups_params do |setting| %>
-            <%= setting.input :rufe, label: "Формировать по индексу массы тела", collection: Group::RUFE_INDEX, prompt: "Выберите ваше значение", as: :select %>  
-            <%= setting.input :weight, label: "Формировать по индексу Руфье", collection: Group::WEIGHT_INDEX, prompt: "Выберите ваше значение", as: :select %>
+            <%= setting.input :rufe, label: "Формировать по индексу Руфье", collection: Group::RUFE_INDEX, prompt: "Выберите ваше значение", as: :select %>  
+            <%= setting.input :weight, label: "Формировать по индексу массы тела", collection: Group::WEIGHT_INDEX, prompt: "Выберите ваше значение", as: :select %>
         <% end %>
-        <%= f.input :coach_id, collection: @coaches, :prompt => "Выберите тренера" %>
+        <%= f.input :days, label: "Дни занятия", collection: Group::DAYS, prompt: "Выберите ваше значение", as: :select %>
+        <%= f.input :coach_id, label: "Тренер", collection: @coaches, :prompt => "Выберите тренера" %>
+        <%= f.input :data_start, as: :date, label: "Дата начало занятий группы" %>
+            <%= f.input :data_finish, as: :date, label: "Дата окончаний занятий группы" %>
           </div><br>
     <div class="group">
-      <%= f.button :submit, label: "Создать новую группу", class: "btn btn-success" %>
+      <%= f.button :submit, "Создать новую группу", class: "btn btn-success" %>
     </div>
   <% end %>

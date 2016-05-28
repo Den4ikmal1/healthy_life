@@ -30,7 +30,7 @@ class GroupsController < ApplicationController
   private
 
     def groups_params
-      params.require(:group).permit(:title, :coach_id)
+      params.require(:group).permit(:title, :coach_id, :data_start, :data_finish, :days)
     end
 
     def coaches_load

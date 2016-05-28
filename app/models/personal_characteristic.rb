@@ -3,10 +3,7 @@ class PersonalCharacteristic < ActiveRecord::Base
   belongs_to :coach
   
   ACTIVITY_TYPES = ["Низкая_активность", "Небольшая_активность", "Средне_статистическа_активность", "Высокая_активность"]
-  
-
-
-
+ 
   def self.index_rufe(params_rufe)
     parametr_rufe = (4 * (parse_params(params_rufe).reduce :+ ) - 200)/10
     { "value": parametr_rufe.round(2), "name": interpretation_index_rufe(parametr_rufe) }
@@ -15,7 +12,7 @@ class PersonalCharacteristic < ActiveRecord::Base
   def self.index_weight(params_weight)
     index = parse_params(params_weight)
     parametr_weight = index[0] / ((index[1] / 100) ** 2)
-    { "value": parametr_weight.round(2), "name": interpretation_index_weight(parametr_weight) }
+    { "value": parametr_weight.round(2), "name": interpretation_index_weight(parametr_weight), "date": Time.zone.now }
   end
 
   def self.index_activity(params_weight)
