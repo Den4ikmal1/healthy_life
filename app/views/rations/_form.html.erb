@@ -1,0 +1,110 @@
+<div class="row">
+<%=  simple_nested_form_for ration, :html => { :multipart => true } do |f| %>
+
+
+<div class="col-md-10">
+
+  <%= f.error_notification %>
+  <%= f.input :name, label: "Название рациона" %>
+  <%= f.input :description, label: "Подробное описание" %>
+
+<div class="rations">
+ <div class= 'lol'>
+  <div class="col-md-4">
+ <div class="test">
+  <h4>Продукты на завтрак:</h4>
+   <%= collection_check_boxes(:morning, :product_ids, Product.all, :id, :name)do |b| %>
+    <div class="row">
+      <%= b.label(class: "check_box") do %>
+        <div class="col-xs-8">
+          <%= b.check_box(class: "check_box") %>
+        </div>
+
+        <div class="col-xs-10">
+          <%= b.object.name %>
+        </div>       
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+  </div>
+</div>
+ <div class= 'lol'>
+  <div class="col-md-4">
+  <div class="test">
+  <h4>Продукты на обед:</h4>
+   <%= collection_check_boxes(:afternoon, :product_ids, Product.all, :id, :name) do |b| %>
+    <div class="row">
+      <%= b.label(class: "check_box") do %>
+        <div class="col-xs-8">
+          <%= b.check_box(class: "check_box") %>
+        </div>
+
+        <div class="col-xs-10">
+          <%= b.object.name %>
+        </div>       
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+  </div>
+  </div>
+   <div class= 'lol'>
+   <div class="col-md-4">
+   <div class="test">
+  <h4>Продукты на полудник:</h4>
+   <%= collection_check_boxes(:lunch, :product_ids, Product.all, :id, :name)do |b| %>
+   <div class="row">
+      <%= b.label(class: "check_box") do %>
+        <div class="col-xs-8">
+          <%= b.check_box(class: "check_box") %>
+        </div>
+
+        <div class="col-xs-10">
+          <%= b.object.name %>
+          
+        </div>       
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+  </div>
+  </div>
+   <div class= 'lol'>
+  <div class="col-md-4">
+  <div class="test">
+  <h4>Продукты на ужин:</h4>
+   <%= collection_check_boxes(:evening, :product_ids, Product.all, :id, :name)do |b| %>
+    <div class="row">
+      <%= b.label(class: "check_box") do %>
+        <div class="col-xs-8">
+          <%= b.check_box(class: "check_box") %>
+        </div>
+
+        <div class="col-xs-10">
+          <%= b.object.name %>
+        </div>       
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="col-md-2">
+<div class="inter">
+
+
+ <div><%= f.button :submit, "Создать Рацион", :class => 'btn btn-success btn-block' %></div><br>
+
+  <div><%= link_to 'Добавить прием', '/add_to', id: 'ration', remote: true, class: 'btn btn-success btn-block' %></div><br>
+<div><%= link_to 'Удалить прием', '/delete', id: 'ration-delete', method: :delete, remote: true, class: 'btn btn-danger btn-block' %></div>
+
+</div> 
+</div>
+<% end %>
+</div>

@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-5">
+    <% unless @product.attachments.blank? %>
+      <%= image_tag @product.attachments.first.file.url.to_s, class: "product-show" %>
+        <% @product.attachments.each do |p| %>
+          <a href="/products/<%= @product.id %>">
+          <%= image_tag p.file.url.to_s, class: "photo" %>
+          </a>
+        <% end %>
+    <% end %> 
+  </div>
+   <div class="col-md-7">
+    <div class="product-info">
+      <h2>Название: <%= @product.name %> </h2>
+      <h3>Описание продукта:(100гр) </h3><br>
+      <h4>Енергетическая ценность<br><%= @product.emulcifying_value%>ккал </h4>
+      <h4>Белков: <br><%= @product.protein%>г </h4>
+      <h4>Углеводов: <br><%= @product.carbohydrates%>г</h4>
+      <h4>Жиров: <br><%= @product.fats%>г</h4><br>
+       <h4>Группы рационов в которых находится данный продукт: </h4>
+       <% @product.rations.each do |f|%> 
+        <h4><%= link_to "#{f.name}", f %></h4>
+    <% end %>
+    </div>
+    </div>
+  </div>
+  </div>

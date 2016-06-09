@@ -4,6 +4,7 @@
 <h4>Окончание занятий в группе: <%= @group.data_finish %> </h4>
 <table class="table table-bordered table-striped">
       <tr>
+        <th>№</th>
         <th>Фамилия</th>
         <th>Имя</th>
         <th>Должность</th>
@@ -11,10 +12,19 @@
       </tr>
 <% @group.users.each do |user|  %>
   <tr>
-    <td><h4><%= link_to "#{user.last_name}", current_user %></td>
+    <td></td>
+    <td><h4><%= link_to "#{user.last_name} "+"#{user.first_name}", user_path(user) %></td>
     <td><h4><%= user.first_name %></h4></td>
     <td><h4><%= user.position %></h4></td>
     <td><h4><%= user.gender %></h4></td>
   </tr>
 <% end %>
 </table>
+<%= link_to "Новое занятие", new_group_schedule_path(@group), class: "btn btn-info" %>
+
+<script>
+  $('.table tr').each(function(i) {
+    i && $(this).find('td:first').text(i);
+
+  });
+</script>

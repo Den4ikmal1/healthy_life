@@ -1,0 +1,42 @@
+<table class="table table-bordered", id = "count">
+    <thead>
+    
+      <tr>
+        <th>№</th>
+        <th class="text-center">ФИО/Даты</th>
+      
+        <% @schedules.each do |f| %>
+
+        <th class="text-center"><%= f.date_employment %></th>
+        <% end %>
+        <th class="text-center">Всего часов</th>
+      </tr>
+    </thead>
+  <tbody>
+
+    
+       <% @group.users.map do |user| %>
+        <tr>
+       <td></td>
+      <td><h4><%= user.last_name %> <%= user.first_name %></h4></td>
+     <% @b.map do |ids| %>
+         <td> <% ids.map do |id| %>
+          <% if id == user.id %>
+
+            <h4 class="text-center">&#10004;</h4>
+           <% end %>
+         <% end %> </td>
+       <% end %>
+       <td class="text-center"> <h4><%= @a.count { |a| a == user.id} %><h4>
+
+     <% end %>
+    </tr>
+  </tbody>
+
+</table>
+<script>
+  $('.table tr').each(function(i) {
+    i && $(this).find('td:first').text(i);
+
+  });
+</script>

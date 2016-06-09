@@ -12,7 +12,7 @@
  *
  *= require_self
  *= require bxslider
- *= require_tree .
+ *= require morris
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -29,6 +29,16 @@ body {
   margin: 70px 0 50px 0;
   background-color: #fff; 
 }
+.checkbox-list input[type="checkbox"] {
+  display: inline-block;
+  width: 10%;
+}
+
+.checkbox-list input[type="checkbox"] + label {
+  display: inline-block;
+  margin-left: 10%;
+  width: 80%;
+}
 .panel-footer{
   text-align:center;
   font-size: 18px;
@@ -40,8 +50,42 @@ body {
 .head{
   text-align: center;
 }
+#count tr{
+  counter-increment: schetchik;
+}
 #lol {
   margin: 30px 0 0 100px;
+}
+.info{
+  margin: 105px 0 0 0;
+}
+.product-show {
+  height: 475px;
+  width: 325px;
+}
+.test{
+    
+    height: 400px;
+  overflow: scroll;
+}
+
+.photo {
+  padding-top: 20px;
+  height: 140px;
+  width: 100px;
+
+}
+.photo1 {
+  padding-top: 20px;
+  height: 120px;
+  width: 100px;
+
+}
+.photo2 {
+ 
+  height: 180px;
+  width: 190px;
+
 }
 .logo{
     a {
@@ -76,4 +120,23 @@ h1, h2, h3, h4, h5, h6 {
 .new-form {
   @include background-tile;
   margin: 40px 0 40px 0;
+}
+.bxslider {
+  width: 100%;
+}
+.bxslider img {
+  height: 500px;
+  width: 100%;
+}
+
+.body img {
+  height: 180px;
+  width: 180px;
+}
+.inter {
+  position: fixed;
+}
+#folo {
+  position: fixed;
+  
 }

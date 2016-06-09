@@ -11,11 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517182045) do
+ActiveRecord::Schema.define(version: 20160606192350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer  "attachmentable_id"
+    t.integer  "attachmentable_type"
+    t.string   "file"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "attachments", ["attachmentable_id", "attachmentable_type"], name: "index_attachments_on_attachmentable_id_and_attachmentable_type", using: :btree
+
+  create_table "exercises", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "rule"
+  end
+
+  create_table "exercises_trainings", id: false, force: :cascade do |t|
+    t.integer "exercise_id"
+    t.integer "training_id"
+  end
 
   create_table "groups", force: :cascade do |t|
     t.datetime "created_at",  null: false
@@ -45,6 +68,73 @@ ActiveRecord::Schema.define(version: 20160517182045) do
   add_index "personal_characteristics", ["user_id"], name: "index_personal_characteristics_on_user_id", using: :btree
   add_index "personal_characteristics", ["weight_index"], name: "index_personal_characteristics_on_weight_index", using: :gist
 
+  create_table "process_trainings", force: :cascade do |t|
+    t.integer  "ration_id"
+    t.integer  "exercise_id"
+    t.integer  "count"
+    t.float    "weight"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "emulcifying_value"
+    t.float    "protein"
+    t.float    "carbohydrates"
+    t.float    "fats"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "portion"
+  end
+
+  create_table "products_rations", id: false, force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "ration_id"
+  end
+
+  add_index "products_rations", ["product_id"], name: "index_products_rations_on_product_id", using: :btree
+  add_index "products_rations", ["ration_id"], name: "index_products_rations_on_ration_id", using: :btree
+
+  create_table "rations", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "morning",     default: [],              array: true
+    t.integer  "afternoon",   default: [],              array: true
+    t.integer  "lunch",       default: [],              array: true
+    t.integer  "evening",     default: [],              array: true
+    t.integer  "new_ration",  default: [],              array: true
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer  "group_id"
+    t.boolean  "visit"
+    t.date     "date_employment"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "user_id"
+    t.integer  "user_ids",        default: [],              array: true
+  end
+
+  create_table "trainings", force: :cascade do |t|
+    t.integer  "number"
+    t.string   "name"
+    t.string   "appointment"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.hstore   "exercise_param",    default: {}
+    t.hstore   "exercise_param_f",  default: {}
+    t.hstore   "exercise_param_s",  default: {}
+    t.hstore   "exercise_param_t",  default: {}
+    t.hstore   "exercise_param_fr", default: {}
+    t.hstore   "exercise_param_fv", default: {}
+    t.hstore   "exercise_param_sx", default: {}
+    t.hstore   "exercise_param_sv", default: {}
+    t.string   "notice"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -65,12 +155,16 @@ ActiveRecord::Schema.define(version: 20160517182045) do
     t.string   "position"
     t.string   "type"
     t.integer  "group_id"
+    t.integer  "ration_id"
+    t.integer  "training_id"
   end
 
   add_index "users", ["coach_id"], name: "index_users_on_coach_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["group_id"], name: "index_users_on_group_id", using: :btree
+  add_index "users", ["ration_id"], name: "index_users_on_ration_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["training_id"], name: "index_users_on_training_id", using: :btree
 
   add_foreign_key "groups", "users", column: "coach_id"
   add_foreign_key "personal_characteristics", "users"

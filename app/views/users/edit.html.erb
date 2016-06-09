@@ -1,6 +1,11 @@
-<h3>Редактирование группы текущего пользователя</h3>
+<h3>Редактирование программы  пользователя: <%= @user.last_name %> <%= @user.first_name %></h3>
 <%= simple_form_for( @user) do |f|%>
+<div class="col-md-8">
     <%= f.error_notification %>
   <%= select_tag(:group_id, options_for_select(@groups), :prompt => "Выберите группу") %>
-  <%= f.button :submit, "Добавит" %>
+  <%= select_tag(:ration_id, options_for_select(@rations), :prompt => "Выберите рацион питания") %>
+  <%= select_tag(:training_id, options_for_select(@trainings), :prompt => "Выберите программу тренировки") %>
+ 
+  </div>
+   <%= f.button :submit, "Добавить(Редактировать)" %>
 <% end %>

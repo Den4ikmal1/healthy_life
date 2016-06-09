@@ -1,0 +1,50 @@
+<div class="col-md-12">
+    <h2>Название: <%= @ration.name %> </h2>
+    <h4>Описание:<br><%= @ration.description%> </h4>
+    <h4> <br><% @ration.products.each do |f|%> </h4>
+        <h4><%= link_to "#{f.name}", f %></h4>
+    <% end %>
+    <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th><h4>На завтрак</h4></th>
+        <th><h4>На обед</h4></th>
+        <th><h4>Перекус</h4></th>
+        <th><h4>На ужин</h4></th>
+        <th><h4>Дополнительный приемы:</h4></th>
+      </tr>
+    </thead>
+  <tbody>
+    <tr>
+    <td>
+    <% @morning.each do |a| %>
+      <h4><%= link_to "#{a.name}", a%></h4>
+    <% end %> 
+    </td>
+
+    <td>
+    <% @afternoon.each do |a| %>
+      <h4><%= link_to "#{a.name}", a %></h4>
+    <% end %> 
+    </td>
+    
+    <td>
+    <% @lunch.each do |a| %>
+      <h4><%= link_to "#{a.name}", a %></h4>
+    <% end %> 
+   </td>
+   
+   <td>
+    <% @evening.each do |a| %>
+      <h4><%= link_to "#{a.name}", a %></h4>
+    <% end %> 
+  </td>
+  <td>
+    <% @new_ration.each do |a| %>
+      <h4><%= link_to "#{a.name}", a %></h4>
+    <% end %> 
+  </td>
+  </tr>
+  </tbody>
+</table>
+</div>

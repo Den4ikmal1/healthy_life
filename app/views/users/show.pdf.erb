@@ -1,0 +1,28 @@
+<table>
+<h3>Фамилия: <%= @user.last_name %><br> Имя: <%= @user.first_name %><br> Должность: <%= @user.position %><br> Пол: <%= @user.gender %></h3>
+<h2>Таблица персональных показателей <%= @user.first_name %>а</h2>
+  <tr>
+    <th>Дата проведения</th>
+    <th>Индекс Руфье </th>
+    <th>Индекс массы тела</th>
+    <th>Индекс метаболизма</th>
+   
+  </tr>
+  <% @test.map do |g| %>
+  <tr>
+    <td><h4><%= g.created_at.strftime("%F/%T") %></h4></td>
+    <td><h4><%= g.rufe_index['name'] %></h4></td>
+    <td><h4><%= g.weight_index['name'] %></h4></td>
+    <td><h4><%= g.activity_index %></h4></td>
+   
+  <% end %>
+  </tr>
+</table>
+<div class="ration">
+  <h3>Рацион ритания</h3>
+  <% @ration.products.map do |product| %>
+    <h4><%= product.name %> Х(1)</h4>
+  <% end %>
+</div>
+
+<h3>Дата формирования отчета: <%= Time.zone.now.strftime("%F/%T") %></h3>

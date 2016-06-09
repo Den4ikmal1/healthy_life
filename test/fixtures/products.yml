@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  emulcifying_value: 1
+  protein: 1.5
+  carbohydrates: MyString
+
+two:
+  name: MyString
+  emulcifying_value: 1
+  protein: 1.5
+  carbohydrates: MyString

@@ -27,7 +27,15 @@ gem 'devise'
 gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'bxslider-rails'
-
+gem 'carrierwave'
+gem 'nested_form'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'bootstrap-datepicker-rails'
+gem 'jquery-validation-rails'
+gem 'moving_average'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

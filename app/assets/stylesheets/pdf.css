@@ -1,0 +1,12 @@
+
+table{
+    border: 1px solid black;
+    table-layout: fixed;
+    width: 190px;
+}
+
+th, td {
+    border: 1px solid black;
+    overflow: hidden;
+    width: 114px;
+}

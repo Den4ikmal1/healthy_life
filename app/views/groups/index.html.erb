@@ -1,5 +1,6 @@
 <table class="table table-bordered table-striped">
       <tr>
+        <th>№</th>
         <th>Название</th>
         <th>Дата создания </th>
         <th>Дата обновления</th>
@@ -7,6 +8,7 @@
       </tr>
 <% @groups.each do |f| %>
   <tr>
+    <td></td>
     <td><h4><%= link_to "#{f.title}", group_path(f) %></h4></td>
     <td><h4><%= f.created_at.strftime("%d %b.%Y") %></h4></td>
     <td><h4><%= f.updated_at.strftime("%d %b.%Y") %></h4></td>
@@ -14,3 +16,10 @@
   </tr>
 <% end %>
 </table>
+
+<script>
+  $('.table tr').each(function(i) {
+    i && $(this).find('td:first').text(i);
+
+  });
+</script>

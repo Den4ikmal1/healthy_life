@@ -6,7 +6,7 @@ class PersonalCharacteristic < ActiveRecord::Base
  
   def self.index_rufe(params_rufe)
     parametr_rufe = (4 * (parse_params(params_rufe).reduce :+ ) - 200)/10
-    { "value": parametr_rufe.round(2), "name": interpretation_index_rufe(parametr_rufe) }
+    { "value": parametr_rufe.round(2), "name": interpretation_index_rufe(parametr_rufe), "date": Time.zone.now }
   end
 
   def self.index_weight(params_weight)
@@ -72,8 +72,6 @@ class PersonalCharacteristic < ActiveRecord::Base
   def self.find_status(obtained_statuses, parametr)
     obtained_statuses.select { |val| val === parametr }.values.first
   end
-
-  private
 
  
 

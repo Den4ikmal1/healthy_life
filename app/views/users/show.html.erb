@@ -1,22 +1,27 @@
-<h3>Фамилия: <%= @user.last_name %><br>Имя: <%= @user.first_name %></h3>
+
 <div class="row">
 <div class="col-md-3">
-  <div><%= link_to "Результат индекса метаболизма", "#" , :class => 'btn btn-info btn-block', id: "metab" %></div><br>
-  <div><%= link_to "Результат индекса массы тела", "#" , :class => 'btn btn-info btn-block', id: "weight" %></div>
+<div class="inter">
+<h3>Фамилия: <%= @user.last_name %><br> Имя: <%= @user.first_name %></h3>
+  <div><%= link_to "Результаты на графике", chart_user_path(@user) , :class => 'btn btn-info btn-block'%></div><br>
+
+  <div><%= link_to "Новое тестирование", new_user_personal_characteristic_path(@user), :class => 'btn btn-primary btn-block' %></div><br>
+<div><%= link_to "Редактировать группу ", edit_user_path(@user) , :class => 'btn btn-warning btn-block' %></div><br>
+<div><%= link_to "отчет в pdf формат", user_path(@user, :format => :pdf),  target: "_blank", :class => "btn btn-primary btn-block" %></div><br>
+<div><%= link_to "Редактировать данные", edit_user_registration_path(current_user) , :class => 'btn btn-default btn-block' %></div><br>
+
+    <div>
+    <%= link_to "Информационная модель", statistics_user_path(@user), class: "btn btn-success btn-block" %></div>
+ 
+</div>
 </div>
 
 <div class="col-md-9">
-  <div class="charts">
-    <%= content_tag :div, "", id: "user_wight", data: { index:  @test }%>
-  </div><br>
-  <div class="charts_weight">
-    <%= content_tag :div, "", id: "user_test", data: { index:  @c }%>
-  </div>
-</div>
+
+
 
 <%= render "shared/personal_data", parent: @user %>
-<%= link_to "Пройти новое тестирование", new_user_personal_characteristic_path(@user), :class => 'btn btn-primary' %>
-<%= link_to "Редактировать группу пользователя", edit_user_path(@user) , :class => 'btn btn-warning' %>
-<%= link_to "Edit", edit_user_registration_path(current_user) , :class => 'btn btn-default' %>
 
+
+</div>
 </div>

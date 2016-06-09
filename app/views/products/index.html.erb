@@ -1,0 +1,36 @@
+<table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Изображение</th>
+        <th>Название</th>
+        <th>Енергетическая ценность/100гр</th>
+        <th>Кол-во белка/100гр</th>
+        <th>Кол-во углеводов/100гр</th>
+        <th>Кол-во жиров/100гр</th>
+        <th>Просмотр продукта</th>
+        <th>Редактирования продукта</th>
+        <th>Удаление продукта</th>
+      </tr>
+    </thead>
+  <tbody>
+  <% @products.each do |f| %>
+    <tr>
+      <td><h4><%= image_tag f.attachments.first.file.url.to_s, class: "photo1" %></h4></td>
+      <td><h4><%= f.name %></h4></td>
+      <td><h4><%= f.emulcifying_value%></h4></td>
+      <td><h4><%= f.protein%></h4></td>
+      <td><h4><%= f.carbohydrates%></h4></td>
+      <td><h4><%= f.fats%></h4></td>
+      <td><%= link_to "Просмотреть продукт", f, class: "btn btn-info" %></td>
+      <td><%= link_to "Редактирования продукта", edit_product_path(f), class: "btn btn-warning" %></td>
+      <td><%= button_to "Удалить продукт", f, method: :delete, class: "btn btn-danger" %></td>
+    </tr>
+  </tbody>
+<% end %>
+</table>
+<div class="container text-center">
+  <div class="pagination">
+    <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>
+

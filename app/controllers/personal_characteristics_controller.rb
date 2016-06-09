@@ -23,7 +23,7 @@ class PersonalCharacteristicsController < ApplicationController
 
     def set_user
 
-      @user = User.find(params[:user_id]) if current_user.type.nil?
+      @user = User.find(params[:user_id])
       @user ||= Coach.find(params[:coach_id]) 
     end
 

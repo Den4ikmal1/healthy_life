@@ -1,0 +1,38 @@
+<table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Изображение</th>
+        <th>Название</th>
+        <th>Описание(100)</th>
+        <th>Просмотр</th>
+        <th>Редактировать</th>
+        <th>Удалить</th>
+      </tr>
+    </thead>
+  <tbody>
+  <% @exercises.each do |f| %>
+    <tr>
+      <td></td>
+      <td><h4><%= image_tag f.attachments.first.file.url.to_s, class: 'photo2' if f.attachments.first %></h4></td>
+      <td><h4><%= f.name %></h4></td>
+      <td><h4><%= truncate(f.description, length: 100)%></h4></td>
+
+      <td><%= link_to "Просмотреть ", f, class: "btn btn-info" %></td>
+      <td><%= link_to "Редактирования ", edit_exercise_path(f), class: "btn btn-warning" %></td>
+      <td><%= button_to "Удалить", f, method: :delete, class: "btn btn-danger" %></td>
+    </tr>
+  </tbody>
+<% end %>
+</table>
+<div class="container text-center">
+  <div class="pagination">
+    <%= will_paginate @exercises, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>
+<script>
+  $('.table tr').each(function(i) {
+    i && $(this).find('td:first').text(i);
+
+  });
+</script>

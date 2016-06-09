@@ -1,0 +1,21 @@
+ <div class= 'lol'>
+ <div class="col-md-4">
+ <div class="test">
+  <h4>Продукты на дополнительный прием</h4>
+   <%= collection_check_boxes(:new, :product_ids, Exercise.all, :id, :name)do |b| %>
+    <div class="row">
+      <%= b.label(class: "check_box") do %>
+        <div class="col-xs-8">
+          <%= b.check_box(class: "check_box") %>
+        </div>
+
+        <div class="col-xs-10">
+          <%= b.object.name %>
+        </div>       
+      <% end %>
+    </div>
+  <% end %>
+
+  </div>
+  </div>
+</div>

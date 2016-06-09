@@ -1,0 +1,14 @@
+<%=  simple_nested_form_for @exercise, :html => { :multipart => true } do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, label: "Название упражнения" %>
+  <%= f.input :description, label: "Описание упражнения" %>
+  <%= f.input :rule, label: "Правило выполнения упражнения" %>
+
+  <div><%= f.fields_for :photos, @exercise.attachments.build do |a| %>
+    <%=  a.file_field :file, multiple: true, name: "exercise[attachments_attributes][][file]" %>
+   <% end %></div><br>
+
+
+  <div><%= f.button :submit, "Создать упражнение", :class => 'btn btn-success' %></div>
+</div>
+<% end %>

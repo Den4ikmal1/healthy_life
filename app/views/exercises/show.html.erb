@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-5">
+    <% unless @exercise.attachments.blank? %>
+      <%= image_tag @exercise.attachments.first.file.url.to_s, class: "product-show" %>
+        <% @exercise.attachments.each do |p| %>
+          <a href="/products/<%= @exercise.id %>">
+          <%= image_tag p.file.url.to_s, class: "photo" %>
+          </a>
+        <% end %>
+    <% end %> 
+  </div>
+   <div class="col-md-7">
+    <div class="product-info">
+      <h3>Название: <%= @exercise.name %> </h3>
+      <h3>Описание упражнение: </h3>
+      <h4><br><%= simple_format(@exercise.description) %></h4>
+      <h3>Правила выполнения: </h3>
+      <h5><%= simple_format(@exercise.rule) %></h5>
+    </div>
+    </div>
+  </div>
+</div>

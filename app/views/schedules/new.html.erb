@@ -1,0 +1,38 @@
+<%= simple_form_for([@group, @group.schedules.build]) do |f| %>
+  <%= f.error_notification %>
+   <h3>Название группы: <%= @group.title %></h3>
+   <h3>Посещаемость занятия </h3>
+   <div class="col-md-4">
+    <table class="table table-bordered">
+
+    <tr>
+      <th>Фамилия Имя/(отсутсвует/присутсвует)</th>
+     </tr>
+   
+    
+     
+      <%=collection_check_boxes(:schedule, :user_ids, @group.users, :id, :last_name)  do |b|%>
+       <div class="row">
+     <%= b.label(class: "check_box") do %>
+      <div class="col-xs-6">
+         <tr><td>
+         <%= b.check_box(class: "check_box") %>
+        </div>  
+        <div class="col-xs-6">
+          <%= b.object.last_name %>
+         <%= b.object.first_name %></td></tr>
+        </div>
+
+      <% end %>
+    </div>
+    <% end %>
+     
+      
+    </table>
+    </div>
+    <div class="info">
+      <h4>Дата занятия: </h4>
+      <%= f.date_field :date_employment%>
+      <%= f.button :submit, "Сохранить запись", :class => "btn btn-success" %>  
+    </div>
+<% end %>

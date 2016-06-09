@@ -5,7 +5,7 @@
       <h4>Введите  значения для определения индекса Руфье:</h4>
       <div class="new-form"><br>
       <%= f.simple_fields_for :rufe_index do |setting| %>
-        <%= setting.input :p1, label: "Пульс до ", input_html: { value: '20'} %>
+        <%= setting.input :p1, label: "Пульс до" %>
         <%= setting.input :p2, label: "Пульс во время ", input_html: { value: '20'} %>
         <%= setting.input :p3, label: "Пульс после ", input_html: { value: '20'}%>
       <% end %>

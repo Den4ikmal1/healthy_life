@@ -1,0 +1,48 @@
+
+<div class="row">
+<div class="col-md-3">
+<div class="inter">
+
+<table class="table table-bordered table-striped">
+  <h2>Показатели</h2>
+  <tr>
+  <th>Имя Фамилия/Дата теста</th>
+       
+    
+        <% @dates.map do |a|%>
+        <th class="text-center"><%= a %></th>
+        <% end %>
+      
+        
+  
+    
+        
+      </tr>
+  
+  
+
+  
+  <tr>
+   <td><%= @user.first_name %> <%= @user.last_name %> </td>
+      <% @user.personal_characteristics.each do |p| %>
+    <td class = "text-center">Индекс Руфье: <%= p.rufe_index['value'] %><br>
+    Индекс Массы: <%= p.weight_index['value'] %></td>
+    
+
+    <% end %>
+  
+  </tr>
+ 
+
+</table>
+
+<h3>Вывод, подходит ли сформированная тренировка для пользователя <%= @user.first_name %> <%=@user.last_name %></h3></br>
+    <h4><%= @rufe.first %></h4><br>
+
+<h3>Вывод, подходит ли рацион питания для пользователя</h3></br>
+    <h4><%= @weight.first %></h4><br>
+
+</div>
+</div>
+
+

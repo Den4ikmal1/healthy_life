@@ -1,0 +1,2 @@
+module ProcessTrainingsHelper
+end

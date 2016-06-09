@@ -1,0 +1,26 @@
+<table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Просмотр рациона</th>
+        <th>Удаление рациона</th>
+      </tr>
+    </thead>
+  <tbody>
+  <% @rations.each do |f| %>
+    <tr>
+      <td><h4><%= f.name %></h4></td>
+      <td><h4><%= f.description%></h4></td>
+      <td><%= link_to "Просмотреть рацион", f, class: "btn btn-info" %></td>
+      <td><%= button_to "Удалить рацион", f, method: :delete, class: "btn btn-danger" %></td>
+    </tr>
+  </tbody>
+<% end %>
+</table>
+<div class="container text-center">
+  <div class="pagination">
+    <%= will_paginate @rations, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>
+

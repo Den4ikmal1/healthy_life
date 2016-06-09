@@ -1,0 +1,17 @@
+<%=  simple_nested_form_for product, :html => { :multipart => true } do |f| %>
+<div class="col-md-8 col-md-offset-2">
+  <%= f.error_notification %>
+  <%= f.input :name, label: "Название продукта" %>
+  <%= f.input :emulcifying_value, label: "Енергитическая (Kкал)" %>
+  <%= f.input :protein, label: "Белков/100гр" %>
+  <%= f.input :carbohydrates, label: "Углеводов/100гр" %>
+  <%= f.input :fats, label: "Жиров/100гр" %>
+  <%= f.input :portion, label: "Порция(грамм)" %>
+  <%= f.fields_for :photos, product.attachments.build do |a| %>
+    <%=  a.file_field :file, multiple: true, name: "product[attachments_attributes][][file]" %>
+   <% end %>
+  <%= collection_check_boxes(:product, :ration_ids, Ration.all, :id, :name)%><br>
+
+  <%= f.button :submit, "Создать продукт", :class => 'btn-custom2' %>
+</div>
+<% end %>
