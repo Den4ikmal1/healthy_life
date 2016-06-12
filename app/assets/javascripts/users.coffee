@@ -48,7 +48,7 @@ ready = ->
     lineColors: ["#FFFF00", "#FFFF00"]
 
   $('#rufus').click ->
-    $('.charts_w').toggle(1500)
+    $('.charts_wweigts').toggle(1500)
 
 
   Morris.Bar

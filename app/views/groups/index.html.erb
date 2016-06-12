@@ -1,18 +1,18 @@
 <table class="table table-bordered table-striped">
       <tr>
-        <th>№</th>
-        <th>Название</th>
-        <th>Дата создания </th>
-        <th>Дата обновления</th>
-        <th>Удаление группы</th>
+        <th class="text-center">№</th>
+        <th class="text-center">Название</th>
+        <th class="text-center">Дата создания </th>
+        <th class="text-center">Колличесво работников<br> в группе</th>
+        <th class="text-center">Удаление группы</th>
       </tr>
 <% @groups.each do |f| %>
   <tr>
-    <td></td>
+    <td class="text-center"></td>
     <td><h4><%= link_to "#{f.title}", group_path(f) %></h4></td>
-    <td><h4><%= f.created_at.strftime("%d %b.%Y") %></h4></td>
-    <td><h4><%= f.updated_at.strftime("%d %b.%Y") %></h4></td>
-    <td><h4><%= button_to "Удалить группу", f, method: :delete, class: "btn btn-danger" %></h4></td>
+    <td><h4 class="text-center"><%= f.created_at.strftime("%d-%m-%Y") %></h4></td>
+    <td><h4 class="text-center"><%= f.users.count %></h4></td>
+    <td><h4 class="text-center"><%= button_to "Удалить группу", f, method: :delete, class: "btn btn-danger" %></h4></td>
   </tr>
 <% end %>
 </table>

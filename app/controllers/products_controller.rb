@@ -14,7 +14,11 @@ class ProductsController < ApplicationController
 
   def update
     @product.update(product_params)
-    redirect_to @product
+      if @product.save
+      redirect_to @product
+    else
+      render :edit
+    end
   end
 
   def create

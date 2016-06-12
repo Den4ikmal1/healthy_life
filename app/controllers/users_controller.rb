@@ -13,7 +13,11 @@ class UsersController < ApplicationController
       format.pdf do
         render pdf: "report",
                template: 'users/show.pdf.erb',
-               layout: 'layouts/pdf.html.erb'  
+               layout: 'layouts/pdf.html.erb',
+                :footer => {
+                :content => render_to_string(:template => 'users/footer.pdf.erb')
+            } 
+
       end
     end
   end
@@ -53,7 +57,7 @@ class UsersController < ApplicationController
     @test.each { |k,v| @d << k.rufe_index}
 
     @test.each { |k,v| @lamd << k.rufe_index['value'] }
-    @b << User.test(@user).last(2)
+    @b << User.test(@user).last(2) 
     @m << User.weight(@user).last(2)
     # assert, asera = { }, { }
     # assert['first'] = @lamd.first
@@ -66,20 +70,20 @@ class UsersController < ApplicationController
     
     s, d = { }, { }
     k, b = { }, { } 
-    @k = @b.flatten!
-    s['first'] = @k.last
-    d['second'] = @lamd.first
-    s['date'] = Time.now
+    @k = @b.flatten
+    s['first'] = @k.last unless @k.empty?
+    d['second'] = @lamd.first unless @lamd.empty?
+    s['date'] = Time.now 
 
-    d['first'] = @k.first
-    s['second'] = @lamd.last
-    d['date'] = Time.now
+    d['first'] = @k.first unless @k.empty?
+    s['second'] = @lamd.last unless @lamd.empty?
+    d['date'] = Time.now 
     @e = [s, d]
-    @u = @m.flatten!
-    k['first'] = @u.last
+    @u = @m.flatten
+    k['first'] = @u.last unless @u.empty?
     k['date'] = Time.now
 
-    b['first'] = @u.first
+    b['first'] = @u.first unless @u.empty?
     b['date'] = Time.now
     @l = [k, b]
     

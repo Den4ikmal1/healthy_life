@@ -3,8 +3,9 @@
       <tr>
         <th>Название</th>
         <th>Описание</th>
-        <th>Просмотр рациона</th>
-        <th>Удаление рациона</th>
+        <th>Просмотр. удаление,<br>
+        Редактирование</th>
+  
       </tr>
     </thead>
   <tbody>
@@ -14,8 +15,11 @@
       <td><h4><%= f.description%></h4></td>
       <td><%= link_to  f, class: "btn btn-info" do %>
       <i class="glyphicon glyphicon-eye-open"></i>
-      <% end %></td>
-      <td><%= button_to f, method: :delete, class: "btn btn-danger" do %>
+      <% end %>
+       <%= link_to  edit_ration_path(f), class: "btn btn-warning" do %>
+      <i class="glyphicon glyphicon-pencil"></i>
+      <% end %>
+     <%= link_to f, method: :delete, class: "btn btn-danger" do %>
       <i class="glyphicon glyphicon-remove-circle"></i>
       <% end %></td></td>
     </tr>

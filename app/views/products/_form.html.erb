@@ -9,8 +9,8 @@
   <%= f.input :portion, label: "Порция(грамм)" %>
   <%= f.fields_for :photos, product.attachments.build do |a| %>
     <%=  a.file_field :file, multiple: true, name: "product[attachments_attributes][][file]" %>
-   <% end %>
-  <%= collection_check_boxes(:product, :ration_ids, Ration.all, :id, :name)%><br>
+   <% end %><br>
+  
 
   <%= f.button :submit, "Создать продукт", :class => 'btn-custom2' %>
 </div>

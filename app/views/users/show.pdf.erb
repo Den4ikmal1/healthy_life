@@ -19,6 +19,7 @@
   </tr>
 </table>
 <hr>
+<hr>
 <div class="training">
 <% if @user.training %>
   <h2 class="test"> Тренировачная программа</h2>
@@ -31,35 +32,36 @@
     <% if @user.training.exercise_param %>
     
    <%= render "shared/report", user: @user, cell: @user.training.exercise_param %>
-   <% end %></h4><br><hr>
-   <h4>
+   <% end %></h4>
+
+    <h4>
    <% if @user.training.exercise_param_f %>
    
    <%= render "shared/report", user: @user, cell: @user.training.exercise_param_f %>
-   <% end %></h4><br><hr>
+   <% end %></h4>
    <h4>
    <% if @user.training.exercise_param_s %>
   
    <%= render "shared/report", user: @user, cell: @user.training.exercise_param_s %>
-   <%  end -%></h4><br><hr>
+   <%  end -%></h4>
    <h4>
    <% if @user.training.exercise_param_t %>
    <%= render "shared/report", user: @user, cell: @user.training.exercise_param_t %>
-   <% end %></h4><br><hr>
+   <% end %></h4>
    <h4>
    <% if @user.training.exercise_param_fr %>
    <%= render "shared/report", user: @user, cell: @user.training.exercise_param_fr %>
-   <% end -%></h4><br><hr>
+   <% end -%></h4>
     <h4>
    <% if @user.training.exercise_param_fv %>
    <%= render "shared/report", user: @user, cell: @user.training.exercise_param_fv %>
    <% end -%>
-   </h4><br><hr>
+   </h4>
    <h4>
    <% if @user.training.exercise_param_sx %>
    <%= render "shared/report", user: @user, cell: @user.training.exercise_param_sx %>
    <% end -%>
-   </h4><br><hr>
+   </h4>
     <h4>
     <% if @user.training.exercise_param_sv %>
    <%= render "shared/report", user: @user, cell: @user.training.exercise_param_sv %>
@@ -94,7 +96,8 @@
    <% end -%>
 <% end %>
 
-
+<hr>
+<hr>
 <div class="hello">
 <% if @ration %>
     
@@ -115,4 +118,5 @@
    <% end%>
 </div>
 <% end%>
-<h3>Дата формирования отчета: <%= Time.zone.now.strftime("%F (%T)") %></h3>
+
+<h3>Дата формирования отчета: <br><%= Time.zone.now.strftime("%F (%T)") %></h3>

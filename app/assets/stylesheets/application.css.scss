@@ -33,7 +33,10 @@ body {
   display: inline-block;
   width: 10%;
 }
-
+.klass img {
+  height: 500px;
+  width: 100%;
+}
 .checkbox-list input[type="checkbox"] + label {
   display: inline-block;
   margin-left: 10%;

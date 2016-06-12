@@ -11,12 +11,6 @@
 
 
 <div class="col-md-9">
-<div class="charts_wweigts">
-    <%= content_tag :div, "", id: "weigtsl", data: { index:  @l }%>
-  </div>
-<div class="charts_w">
-    <%= content_tag :div, "", id: "user_rufus", data: { index:  @e }%>
-  </div>
 
   <div class="charts">
     <%= content_tag :div, "", id: "user_wight", data: { index:  @test }%>
@@ -27,5 +21,14 @@
   <div class="charts_rufe">
     <%= content_tag :div, "", id: "user_one", data: { index:  @tarantiono }%>
   </div>
+  <% unless @l.first['first'] %>
+    <div class="charts_wweigts">
+
+    <%= content_tag :div, "", id: "weigtsl", data: { index:  @l }%>
+
+    <%= content_tag :div, "", id: "user_rufus", data: { index:  @e }%>
+  </div>
+
+<% end %>
   
 </div>
