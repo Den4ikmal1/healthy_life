@@ -27,12 +27,12 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Окно управления<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <div class="user-panel">
-            
+            <% if coach_signed_in? %>
                   <li><%= link_to "Панель управления для треннера", dasboards_users_path, class: "btn btn-link" %></li>
                   <%= link_to "Зарегестрировать пользователя", new_user_registration_path, class: "btn btn-link"  %>
                   <%= link_to "Зарегестрировать тренера", new_coach_registration_path, class: "btn btn-link"  %> 
                  
-
+            <% end %>
           
               <% if user_signed_in? %>
                 <%= link_to "Выйти", destroy_user_session_path, :method => :delete, class: "btn btn-link"  %>

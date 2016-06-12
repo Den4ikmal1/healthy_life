@@ -1,6 +1,6 @@
 <table>
 <h3>Фамилия: <%= @user.last_name %><br> Имя: <%= @user.first_name %><br> Должность: <%= @user.position %><br> Пол: <%= @user.gender %></h3>
-<h2>Таблица персональных показателей <%= @user.first_name %>а</h2>
+<h2>Таблица персональных показателей <%= @user.first_name %></h2>
   <tr>
     <th>Дата проведения</th>
     <th>Индекс Руфье </th>
@@ -29,44 +29,37 @@
     <h3>Замечания: <br>  <%= @user.training.notice %></h3>
     <h3>Упражнения:</h3>
     </h4>
-    <% if @user.training.exercise_param %>
+    <% if @user.training.exercise_param['count'] != "" %>
     
    <%= render "shared/report", user: @user, cell: @user.training.exercise_param %>
    <% end %></h4>
 
     <h4>
-   <% if @user.training.exercise_param_f %>
+   <% if @user.training.exercise_param_f['count'] != "" %>
    
    <%= render "shared/report", user: @user, cell: @user.training.exercise_param_f %>
    <% end %></h4>
    <h4>
-   <% if @user.training.exercise_param_s %>
+   <% if @user.training.exercise_param_s['count'] != "" %>
   
    <%= render "shared/report", user: @user, cell: @user.training.exercise_param_s %>
    <%  end -%></h4>
    <h4>
-   <% if @user.training.exercise_param_t %>
+   <% if @user.training.exercise_param_t['count'] != ""%>
    <%= render "shared/report", user: @user, cell: @user.training.exercise_param_t %>
    <% end %></h4>
    <h4>
-   <% if @user.training.exercise_param_fr %>
+   <% if @user.training.exercise_param_fr['count'] != ""%>
    <%= render "shared/report", user: @user, cell: @user.training.exercise_param_fr %>
    <% end -%></h4>
     <h4>
-   <% if @user.training.exercise_param_fv %>
+   <% if @user.training.exercise_param_fv['count'] != ""%>
    <%= render "shared/report", user: @user, cell: @user.training.exercise_param_fv %>
    <% end -%>
    </h4>
    <h4>
-   <% if @user.training.exercise_param_sx %>
-   <%= render "shared/report", user: @user, cell: @user.training.exercise_param_sx %>
-   <% end -%>
-   </h4>
-    <h4>
-    <% if @user.training.exercise_param_sv %>
-   <%= render "shared/report", user: @user, cell: @user.training.exercise_param_sv %>
-   <% end -%>
-   </h4>
+ 
+   
    <% if @user.training.exercise_param_cardio['type'] %>
      
 <h3>Кардио нагрузка</h3>
@@ -74,8 +67,8 @@
     <thead>
       <tr>
         <th>Тип</th>
-        <th>Вемя упражнения  </th>
-        <th>Максимальная частота пульса</th>
+        <th>Вемя упражнения(мин)  </th>
+        <th>Максимальная частота пульса(за 1с)</th>
        
        
        
