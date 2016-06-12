@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   def show
     @ration = @user.ration
-
+   
     @test = @user.personal_characteristics
     @groups = Group.all.map{ |c| [c.title, c.id]}
     respond_to do |format|
@@ -28,9 +28,15 @@ class UsersController < ApplicationController
    
   end
 
+  def index 
+    @users = User.all
+  end
+
+
+
   def statistics
     
-    @dates = ["14.05.2016", "21.05.2016", "28.05.2016", "5.05.2016",  "12.05.2016"]
+    
     @rufe = User.test(@user)
     @weight = User.weight(@user)
  

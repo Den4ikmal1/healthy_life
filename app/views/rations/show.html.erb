@@ -1,6 +1,6 @@
 <div class="col-md-12">
     <h2>Название: <%= @ration.name %> </h2>
-    <h4>Описание:<br><%= @ration.description%> </h4>
+    <h4>Описание:<br><%= @ration.description %> </h4>
     <h4> <br><% @ration.products.each do |f|%> </h4>
         <h4><%= link_to "#{f.name}", f %></h4>
     <% end %>

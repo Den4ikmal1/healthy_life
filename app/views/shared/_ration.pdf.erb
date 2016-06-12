@@ -1,0 +1,8 @@
+
+
+ 
+
+   <% ration.map do |product| %>
+    <td> <%= Product.where(id: product).first.name unless product.nil? %> </td>
+    <td><%= Product.where(id: product).first.portion unless product.nil? %> (гр) </td>,
+  <% end -%>

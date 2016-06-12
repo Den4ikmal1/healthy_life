@@ -1,13 +1,13 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-$ ->
-  $("#training").on 'ajax:success', (e, data, status, xhr) ->
-    $('.training').append data
+ready = ->
+  $('#cardios').click ->
+    $('.cardio').toggle(1500)
 
-  $("#ration-delete").on 'click', (e) ->
-    e.preventDefault()
-    $('.lol').last().remove()
-    return
+  $('#full_train').click ->
+    $('.full_training').toggle(1500)
 
 
+$(document).ready(ready)
+$(document).on('page:load', ready)

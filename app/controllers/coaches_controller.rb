@@ -1,6 +1,6 @@
 class CoachesController < ApplicationController
   
-  before_action :set_coach, only: [:show]
+  before_action :set_coach, only: [:show, :destroy]
   
   def show
   # @parametrs = @user.personal_characteristics.buil

@@ -4,5 +4,8 @@ class StaticPagesController < ApplicationController
     
   end
 
+  def dasboard
+
+  end
   
 end

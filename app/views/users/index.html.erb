@@ -1,0 +1,39 @@
+<table class="table table-bordered table-striped">
+      <tr>
+        <th>№</th>
+        <th>Имя, Фамилия</th>
+        <th>Дожность</th>
+        <th>Группа пользователя</th>
+        <th>Тренировочная программа</th>
+         <th>Рацион питания</th>
+        <th> Редактирование, <br>Просмотр</th>
+       
+      </tr>
+<% @users.each do |f| %>
+  <tr>
+   <% unless f.type == "Coach" %>
+    <td></td>
+    <td><h4><%= f.first_name %> <%= f.last_name %></h4></td>
+    <td><h4><%= f.position %></h4></td>
+    <td><h4><%= link_to "#{f.group.title}", f.group   if f.group %></h4></td>
+    <td><h4><%= link_to "#{f.training.name}", f.training   if f.training %></h4></td>
+    <td><h4><%= link_to "#{f.ration.name}", f.ration   if f.ration %></h4></td>
+    <td>
+    <%= link_to  edit_user_path(f), class: "btn btn-warning" do %>
+      <i class="glyphicon glyphicon-pencil"></i>
+      <% end %>
+    <%= link_to  f,  class: "btn btn-info"  do%>
+    <i class="glyphicon glyphicon-user"></i>
+    <% end %>
+    </td>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+
+<script>
+  $('.table tr').each(function(i) {
+    i && $(this).find('td:first').text(i);
+
+  });
+</script>

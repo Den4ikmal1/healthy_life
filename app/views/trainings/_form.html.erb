@@ -2,15 +2,17 @@
   <%= f.error_notification %>
 
   <div class="row">
+   <div class="col-md-10">
   <%= f.input :number, label: "Номер" %>
   <%= f.input :name, label: "Название" %>
   <%= f.input :notice, label: "Заметки" %>
+  <div class="full_training" style="display:none">
   <div class="col-md-4">
   <%= f.simple_fields_for :exercise_param do |setting| %>
        
         <%= setting.select(:training_id, options_for_select(@exercise), :prompt => "Выберите упражнение") %>
         <%= setting.input :count, label: "Колличество повтор", :input_html => { :type => "number", min: '1' }%>
-        <%= setting.input :count, label: "Колличество подходов", :input_html => { :type => "number", min: '1' }%>
+        <%= setting.input :number, label: "Колличество подходов", :input_html => { :type => "number", min: '1' }%>
         <%= setting.input :weight, label: "Вес снаряда (кг)", :input_html => { :type => "number", min: '1' }%>
      
    <% end %>     
@@ -21,7 +23,7 @@
        
         <%= setting.select(:training_id, options_for_select(@exercise), :prompt => "Выберите упражнение") %>
         <%= setting.input :count, label: "Колличество повтор", :input_html => { :type => "number", min: '1' }%>
-        <%= setting.input :count, label: "Колличество подходов", :input_html => { :type => "number", min: '1' }%>
+        <%= setting.input :number, label: "Колличество подходов", :input_html => { :type => "number", min: '1' }%>
         <%= setting.input :weight, label: "Вес снаряда (кг)", :input_html => { :type => "number", min: '1' }%>
      
    <% end %>     
@@ -32,7 +34,7 @@
        
         <%= setting.select(:training_id, options_for_select(@exercise), :prompt => "Выберите упражнение") %>
         <%= setting.input :count, label: "Колличество повтор", :input_html => { :type => "number", min: '1' }%>
-        <%= setting.input :count, label: "Колличество подходов", :input_html => { :type => "number", min: '1' }%>
+        <%= setting.input :number, label: "Колличество подходов", :input_html => { :type => "number", min: '1' }%>
         <%= setting.input :weight, label: "Вес снаряда (кг)", :input_html => { :type => "number", min: '1' }%>
      
    <% end %>     
@@ -43,7 +45,7 @@
        
         <%= setting.select(:training_id, options_for_select(@exercise), :prompt => "Выберите упражнение") %>
         <%= setting.input :count, label: "Колличество повтор", :input_html => { :type => "number", min: '1' }%>
-        <%= setting.input :count, label: "Колличество подходов", :input_html => { :type => "number", min: '1' }%>
+        <%= setting.input :number, label: "Колличество подходов", :input_html => { :type => "number", min: '1' }%>
         <%= setting.input :weight, label: "Вес снаряда (кг)", :input_html => { :type => "number", min: '1' }%>
      
    <% end %>     
@@ -54,7 +56,7 @@
        
         <%= setting.select(:training_id, options_for_select(@exercise), :prompt => "Выберите упражнение") %>
         <%= setting.input :count, label: "Колличество повтор", :input_html => { :type => "number", min: '1' }%>
-        <%= setting.input :count, label: "Колличество подходов", :input_html => { :type => "number", min: '1' }%>
+        <%= setting.input :number, label: "Колличество подходов", :input_html => { :type => "number", min: '1' }%>
         <%= setting.input :weight, label: "Вес снаряда (кг)", :input_html => { :type => "number", min: '1' }%>
      
    <% end %>     
@@ -65,16 +67,35 @@
        
         <%= setting.select(:training_id, options_for_select(@exercise), :prompt => "Выберите упражнение") %>
         <%= setting.input :count, label: "Колличество повтор", :input_html => { :type => "number", min: '1' }%>
-        <%= setting.input :count, label: "Колличество подходов", :input_html => { :type => "number", min: '1' }%>
+        <%= setting.input :number, label: "Колличество подходов", :input_html => { :type => "number", min: '1' }%>
         <%= setting.input :weight, label: "Вес снаряда (кг)", :input_html => { :type => "number", min: '1' }%>
      
    <% end %>     
   
 </div>
-
+</div>
+<div class="col-md-9 col-sm-offset-2">
+<div class="cardio" style="display:none">
+  <%= f.simple_fields_for :exercise_param_cardio do |setting| %>
+       
+        <%= setting.input(:type,  collection: [ "Беговая дорожка", "Велотренажор", "Бег трусцой / (вокруг стадиона)"], prompt: "Выберите тип кардио упражнение", label: "Тип")%>
+        <%= setting.input :time, label: "Время выполнения (в минутах)", :input_html => { :type => "number", min: '1' }%>
+        <%= setting.input :quantaty, label: "Максимальная частота пульса при выполнения", :input_html => { :type => "number", min: '1' }%>
+        
+     
+   <% end %>     
+  
+</div>
+</div>
+</div>
+ <div class="col-md-2">
+<div class="inter">
   <div class="form-actions">
-    <%= f.button :submit, "Создать тренировку" %>
-  </div>
+    <%= f.button :submit, "Создать тренировку", :class => 'btn btn-success btn-block' %>
+  </div><br>
 <% end %>
-
+ <div><%= link_to "Кардио упражнения", "#" , :class => 'btn btn-primary btn-block', id: "cardios" %></div><br>
+  <div><%= link_to "Силовые упражнения", "#" , :class => 'btn btn-primary btn-block', id: "full_train" %></div><br>
+  </div>
+  </div>
   </div>

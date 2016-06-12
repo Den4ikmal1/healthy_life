@@ -1,6 +1,8 @@
 class TrainingsController < ApplicationController
   before_action :set_training, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_coach!
 
+  authorize_resource
   # GET /trainings
   # GET /trainings.json
   def index
@@ -85,6 +87,8 @@ class TrainingsController < ApplicationController
         whitelisted[:exercise_param_fv] = params[:training][:exercise_param_fv]
         whitelisted[:exercise_param_sx] = params[:training][:exercise_param_sx]
         whitelisted[:exercise_param_sv] = params[:training][:exercise_param_sv]
+        whitelisted[:exercise_param_cardio] = params[:training][:exercise_param_cardio]
+        
       end
     end
 end

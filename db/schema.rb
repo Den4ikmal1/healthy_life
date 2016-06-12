@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606192350) do
+ActiveRecord::Schema.define(version: 20160611205134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,17 +122,18 @@ ActiveRecord::Schema.define(version: 20160606192350) do
     t.integer  "number"
     t.string   "name"
     t.string   "appointment"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.hstore   "exercise_param",    default: {}
-    t.hstore   "exercise_param_f",  default: {}
-    t.hstore   "exercise_param_s",  default: {}
-    t.hstore   "exercise_param_t",  default: {}
-    t.hstore   "exercise_param_fr", default: {}
-    t.hstore   "exercise_param_fv", default: {}
-    t.hstore   "exercise_param_sx", default: {}
-    t.hstore   "exercise_param_sv", default: {}
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.hstore   "exercise_param",        default: {}
+    t.hstore   "exercise_param_f",      default: {}
+    t.hstore   "exercise_param_s",      default: {}
+    t.hstore   "exercise_param_t",      default: {}
+    t.hstore   "exercise_param_fr",     default: {}
+    t.hstore   "exercise_param_fv",     default: {}
+    t.hstore   "exercise_param_sx",     default: {}
+    t.hstore   "exercise_param_sv",     default: {}
     t.string   "notice"
+    t.hstore   "exercise_param_cardio", default: {}
   end
 
   create_table "users", force: :cascade do |t|
@@ -166,8 +167,5 @@ ActiveRecord::Schema.define(version: 20160606192350) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["training_id"], name: "index_users_on_training_id", using: :btree
 
-  add_foreign_key "groups", "users", column: "coach_id"
-  add_foreign_key "personal_characteristics", "users"
-  add_foreign_key "personal_characteristics", "users", column: "coach_id"
   add_foreign_key "users", "users", column: "coach_id"
 end

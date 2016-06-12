@@ -14,7 +14,7 @@
       </tr>
 <% parent.personal_characteristics.each do |p| %>
   <tr>
-    <td><h4><%= p.created_at.strftime("%d %b.%Y") %></td>
+    <td><h4><%= p.created_at.strftime("%d-%m-%Y") %></td>
     <td><h4><%= p.rufe_index['value'] %></h4><h5><%= p.rufe_index['name'] %> </h5></td>
     <td><h4> <%= p.weight_index['value'] %></h4><h5><%= p.weight_index['name'] %></h5></td>
     <td><h4><%= p.activity_index %></h4></td>

@@ -10,7 +10,7 @@
   </tr>
   <% @test.map do |g| %>
   <tr>
-    <td><h4><%= g.created_at.strftime("%F/%T") %></h4></td>
+    <td><h4><%= g.created_at.strftime("%d-%m-%Y") %></h4></td>
     <td><h4><%= g.rufe_index['name'] %></h4></td>
     <td><h4><%= g.weight_index['name'] %></h4></td>
     <td><h4><%= g.activity_index %></h4></td>
@@ -18,11 +18,101 @@
   <% end %>
   </tr>
 </table>
-<div class="ration">
-  <h3>Рацион ритания</h3>
-  <% @ration.products.map do |product| %>
-    <h4><%= product.name %> Х(1)</h4>
-  <% end %>
-</div>
+<hr>
+<div class="training">
+<% if @user.training %>
+  <h2 class="test"> Тренировачная программа</h2>
+  </div>
+  <h3>Номер: <%= @user.training.number %> </h3>
+    <h3>Названия:  <%= @user.training.name %></h3>
+    <h3>Замечания: <br>  <%= @user.training.notice %></h3>
+    <h3>Упражнения:</h3>
+    </h4>
+    <% if @user.training.exercise_param %>
+    
+   <%= render "shared/report", user: @user, cell: @user.training.exercise_param %>
+   <% end %></h4><br><hr>
+   <h4>
+   <% if @user.training.exercise_param_f %>
+   
+   <%= render "shared/report", user: @user, cell: @user.training.exercise_param_f %>
+   <% end %></h4><br><hr>
+   <h4>
+   <% if @user.training.exercise_param_s %>
+  
+   <%= render "shared/report", user: @user, cell: @user.training.exercise_param_s %>
+   <%  end -%></h4><br><hr>
+   <h4>
+   <% if @user.training.exercise_param_t %>
+   <%= render "shared/report", user: @user, cell: @user.training.exercise_param_t %>
+   <% end %></h4><br><hr>
+   <h4>
+   <% if @user.training.exercise_param_fr %>
+   <%= render "shared/report", user: @user, cell: @user.training.exercise_param_fr %>
+   <% end -%></h4><br><hr>
+    <h4>
+   <% if @user.training.exercise_param_fv %>
+   <%= render "shared/report", user: @user, cell: @user.training.exercise_param_fv %>
+   <% end -%>
+   </h4><br><hr>
+   <h4>
+   <% if @user.training.exercise_param_sx %>
+   <%= render "shared/report", user: @user, cell: @user.training.exercise_param_sx %>
+   <% end -%>
+   </h4><br><hr>
+    <h4>
+    <% if @user.training.exercise_param_sv %>
+   <%= render "shared/report", user: @user, cell: @user.training.exercise_param_sv %>
+   <% end -%>
+   </h4>
+   <% if @user.training.exercise_param_cardio['type'] %>
+     
+<h3>Кардио нагрузка</h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th>Тип</th>
+        <th>Вемя упражнения  </th>
+        <th>Максимальная частота пульса</th>
+       
+       
+       
+      </tr>
+    </thead>
+  <tbody>
+  <tr>
+    
+   <td> <%= @user.training.exercise_param_cardio['type'] if @user.training.exercise_param_cardio['type'] %> </td>
+   <td> <%= @user.training.exercise_param_cardio['time'] if @user.training.exercise_param_cardio['time'] %> </td>
+    <td><%=@user.training.exercise_param_cardio['quantaty'] if @user.training.exercise_param_cardio['quantaty'] %></td>
 
-<h3>Дата формирования отчета: <%= Time.zone.now.strftime("%F/%T") %></h3>
+    </tr>
+  </tbody>
+
+</table>
+
+   <% end -%>
+<% end %>
+
+
+<div class="hello">
+<% if @ration %>
+    
+    <h2 class="test"> Рацион питания</h2>
+    <h3>Названия:  <%= @ration.name %></h3>
+    <h3>Описание: <br>  <%= @ration.description %></h3>
+    <h4 class="ration">На завтрак</h4>
+   <%= render "shared/ration", ration: @ration.morning %>
+   <h4 class="ration">На обед</h4>
+   <%= render "shared/ration", ration: @ration.afternoon %>
+   <h4 class="ration">На перекус</h4>
+   <%= render "shared/ration", ration: @ration.lunch %>
+   <h4 class="ration">На ужин</h4>
+   <%= render "shared/ration", ration: @ration.evening %>
+   <% if @ration.new_ration %>
+    <h4 class="ration">Дополниетльный прием пищи</h4>
+   <%= render "shared/ration", ration: @ration.new_ration %>
+   <% end%>
+</div>
+<% end%>
+<h3>Дата формирования отчета: <%= Time.zone.now.strftime("%F (%T)") %></h3>

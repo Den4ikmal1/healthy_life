@@ -8,9 +8,6 @@
     <tr>
       <th>Фамилия Имя/(отсутсвует/присутсвует)</th>
      </tr>
-   
-    
-     
       <%=collection_check_boxes(:schedule, :user_ids, @group.users, :id, :last_name)  do |b|%>
        <div class="row">
      <%= b.label(class: "check_box") do %>

@@ -10,3 +10,16 @@ th, td {
     overflow: hidden;
     width: 114px;
 }
+table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid !important;
+}
+.training {
+  text-align: center;
+}
+.test {
+  text-align: center;
+}
+
+.ration {
+  text-align: center;
+}

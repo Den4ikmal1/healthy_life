@@ -1,6 +1,6 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
-
+  authorize_resource
   # GET /exercises
   # GET /exercises.json
   def index

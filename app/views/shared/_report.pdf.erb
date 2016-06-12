@@ -1,0 +1,25 @@
+<div class="report">
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Названия</th>
+        <th>Колличество подходов: </th>
+        <th>Колличество повторов: </th>
+        <th>Вес снаряда:</th>
+       
+       
+      </tr>
+    </thead>
+  <tbody>
+  <tr>
+    <td><%= Exercise.find(cell['training_id'].to_i).name %></td>
+   <td> <%= cell['count'] %> </td>
+   <td> <%= cell['number'] %> </td>
+    <td><%=cell['weight'] %></td>
+
+    </tr>
+  </tbody>
+
+</table>
+</div>

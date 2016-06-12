@@ -1,4 +1,6 @@
 class SchedulesController < ApplicationController
+  before_action :authenticate_user!
+  authorize_resource
   def new
     @group = Group.find(params[:group_id])
     @schedule = Schedule.new

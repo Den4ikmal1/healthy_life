@@ -1,0 +1,74 @@
+
+<div class="row">
+<div class="col-md-12">
+<h3>Номер тренировки: <%= @training.number %></h3>
+<h4>Названия: <%= @training.name %></h3></h4> 
+<h4>Заметки: <%= @training.notice %></h3></h4>
+<div class="border"> 
+<div class="col-md-3">
+<% if @training.exercise_param['training_id'] != ""%>
+    <h4>Название упражнения: <%= link_to "#{Exercise.find(@training.exercise_param['training_id'].to_i).name}", exercise_path(Exercise.find(@training.exercise_param['training_id'].to_i)) if @training.exercise_param['training_id']%></h4>
+    <h4>Колличесво подходов: <%=@training.exercise_param['count']%></h4>
+    <h4>Колличесво повторов: <%= @training.exercise_param['number'] %></h4>
+    <h4>Вес снаряда: <%=  @training.exercise_param['weight'] %>  </h4>
+<% end %>
+
+</div>
+<div class="col-md-3">
+<% if @training.exercise_param_f['training_id'] != "" %>
+    <h4>Название упражнения: <%= link_to "#{Exercise.find(@training.exercise_param_f['training_id'].to_i).name}", exercise_path(Exercise.find(@training.exercise_param_f['training_id'].to_i)) if @training.exercise_param_f['training_id']%></h4>
+    <h4>Колличесво подходов: <%=@training.exercise_param_f['count']%></h4>
+    <h4>Колличесво повторов: <%= @training.exercise_param_f['number'] %></h4>
+    <h4>Вес снаряда: <%=  @training.exercise_param_f['weight'] %>  </h4>
+<% end %>
+
+</div>
+<div class="col-md-3">
+<% if @training.exercise_param_s['training_id'] != ""%>
+    <h4>Название упражнения: <%= link_to "#{Exercise.find(@training.exercise_param_s['training_id'].to_i).name}", exercise_path(Exercise.find(@training.exercise_param_s['training_id'].to_i)) if @training.exercise_param_s['training_id']%></h4>
+    <h4>Колличесво подходов: <%=@training.exercise_param_s['count']%></h4>
+    <h4>Колличесво повторов: <%= @training.exercise_param_s['number'] %></h4>
+    <h4>Вес снаряда: <%=  @training.exercise_param_s['weight'] %>  </h4>
+<% end %>
+
+</div>
+<div class="col-md-3">
+<% if @training.exercise_param_t['training_id'] != ""%>
+    <h4>Название упражнения: <%= link_to "#{Exercise.find(@training.exercise_param_t['training_id'].to_i).name}", exercise_path(Exercise.find(@training.exercise_param_t['training_id'].to_i)) if @training.exercise_param_t['training_id'] %></h4>
+    <h4>Колличесво подходов: <%=@training.exercise_param_t['count']%></h4>
+    <h4>Колличесво повторов: <%= @training.exercise_param_t['number'] %></h4>
+    <h4>Вес снаряда: <%=  @training.exercise_param_t['weight'] %>  </h4>
+<% end %>
+
+</div>
+<div class="col-md-3">
+<% if @training.exercise_param_fr['training_id'] != ""%>
+    <h4>Название упражнения: <%= link_to "#{Exercise.find(@training.exercise_param_fr['training_id'].to_i).name}", exercise_path(Exercise.find(@training.exercise_param_fr['training_id'].to_i)) if @training.exercise_param_fr['training_id']%></h4>
+    <h4>Колличесво подходов: <%=@training.exercise_param_fr['count']%></h4>
+    <h4>Колличесво повторов: <%= @training.exercise_param_fr['number'] %></h4>
+    <h4>Вес снаряда: <%=  @training.exercise_param_fr['weight'] %>  </h4>
+<% end %>
+
+</div>
+<div class="col-md-3">
+<% if @training.exercise_param_fv['training_id']!= "" %>
+    <h4>Название упражнения: <%= link_to "#{Exercise.find(@training.exercise_param_fv['training_id'].to_i).name}", exercise_path(Exercise.find(@training.exercise_param_fv['training_id'].to_i)) if @training.exercise_param_fv['training_id']%></h4>
+    <h4>Колличесво подходов: <%=@training.exercise_param_fv['count']%></h4>
+    <h4>Колличесво повторов: <%= @training.exercise_param_fv['number'] %></h4>
+    <h4>Вес снаряда: <%=  @training.exercise_param_fv['weight'] %>  </h4>
+<% end %>
+
+</div>
+
+<div class="col-md-6">
+<% if @training.exercise_param_cardio %>
+
+    <h4>Тип кардио-упражнения: <%=@training.exercise_param_cardio['type']%></h4>
+    <h4>Время выполнения: <%= @training.exercise_param_cardio['time'] %></h4>
+    <h4>Максимальная частота пульса <%=  @training.exercise_param_cardio['quantaty'] %>  </h4>
+<% end %>
+
+</div>
+</div>
+</div>
+</div>

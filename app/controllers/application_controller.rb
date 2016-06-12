@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :account_url
+  devise_group :user, contains: [:coach, :user]
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -11,6 +12,10 @@ class ApplicationController < ActionController::Base
     user_params.permit(:first_name, :last_name, :gender, :position, :email, :password, :password_confirmation)
   end
 end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, alert: exception.message
+  end 
 
    def account_url
       return new_user_session_url unless user_signed_in?

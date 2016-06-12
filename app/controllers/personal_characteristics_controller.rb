@@ -1,6 +1,7 @@
 class PersonalCharacteristicsController < ApplicationController
   before_action :set_user
- 
+  before_action :authenticate_user!
+
   
   def new
     @personal_characteristic = PersonalCharacteristic.new

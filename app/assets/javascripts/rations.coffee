@@ -1,4 +1,4 @@
-$ ->
+ready = ->
   $("#ration").on 'ajax:success', (e, data, status, xhr) ->
     $('.rations').append data
 
@@ -7,4 +7,7 @@ $ ->
     $('.lol').last().remove()
     return
 
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
 

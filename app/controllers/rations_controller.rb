@@ -39,7 +39,7 @@ class RationsController < ApplicationController
     end
   end
   def index
-    @rations = Ration.all.paginate(page: params[:page], per_page: 3)
+    @rations = Ration.all.paginate(page: params[:page], per_page: 5)
   end
   def destroy
     @ration.destroy

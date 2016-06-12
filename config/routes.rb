@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :exercises
   devise_for :users
   devise_for :coaches
-  resources :users, :coaches, only: [:show, :edit, :update] do
+  resources :users, :coaches, only: [:show, :edit, :update, :index] do
     get 'chart', on: :member
     get 'dasboards', on: :collection
     get 'statistics', on: :member
@@ -22,12 +22,12 @@ Rails.application.routes.draw do
   delete 'delete' => 'rations#delete'
   get 'add_to/training' => 'trainings#add_to'
   delete 'delete/training' => 'trainings#delete'
-
+  root 'static_pages#home'
  
 
 
   
-  root 'static_pages#home'
+  get "hello" => "static_pages#dasboard"
   
 
 end

@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
 
   before_action :coaches_load, only: [:new, :create]
   before_action :find_group, only: [:show, :destroy]
-
+  authorize_resource
   def new 
     @group = Group.new
   end 

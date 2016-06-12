@@ -36,6 +36,7 @@ gem 'wkhtmltopdf-binary'
 gem 'bootstrap-datepicker-rails'
 gem 'jquery-validation-rails'
 gem 'moving_average'
+gem 'cancancan'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

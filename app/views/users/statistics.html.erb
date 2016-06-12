@@ -9,8 +9,8 @@
   <th>Имя Фамилия/Дата теста</th>
        
     
-        <% @dates.map do |a|%>
-        <th class="text-center"><%= a %></th>
+        <% @user.personal_characteristics.map do |a|%>
+        <th class="text-center"><%= a.created_at.strftime("%d-%m-%Y") %></th>
         <% end %>
       
         

@@ -21,36 +21,43 @@
       </div>
       
       <ul class="nav navbar-nav navbar-right">
-       <li><%= link_to "Панель управления для треннера", dasboards_users_path, class: "btn btn-link" %></li>
+
+        
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Окно пользователя<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Окно управления<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <div class="user-panel">
+              <% if coach_signed_in?  %>
+                
+                  <li><%= link_to "Панель управления для треннера", dasboards_users_path, class: "btn btn-link" %></li>
+                  <%= link_to "Зарегестрировать пользователя", new_user_registration_path, class: "btn btn-link"  %>
+                  <%= link_to "Зарегестрировать тренера", new_coach_registration_path, class: "btn btn-link"  %> 
+                 
+
+              <% end %>
               <% if user_signed_in? %>
                 <%= link_to "Выйти", destroy_user_session_path, :method => :delete, class: "btn btn-link"  %>
+
                 <% if current_user.type.nil? %>
                 <%= link_to "Личный кабинет", user_path(current_user), class: "btn btn-link" %>
-                
-
                 <% end %>
+              
               <% else %>
-                <% unless user_signed_in? || coach_signed_in? %>
-                  <%= link_to "Зарегестриролвать пользователя", new_user_registration_path, class: "btn btn-link"  %> 
-                 
-                <% end %>
+                
+                  <%= link_to "Главное окно", root_url, class: "btn btn-link"  %>
+                  
               <% end %>
-              <% if coach_signed_in? %>
-                <%= link_to "Sign out", destroy_coach_session_path, :method => :delete, class: "btn btn-link" %>
-              <% end %>
+             
           </div> 
           </ul>
         </li>
         <% unless user_signed_in? || coach_signed_in? %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Войти как пользователь<span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Войти<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <ul class="nav navbar-nav">
-                    <%= link_to "Войти", new_user_session_path, class: "btn btn-link"  %>
+                    <%= link_to "Войти как пользователь", new_user_session_path, class: "btn btn-link"  %>
+                    <%= link_to "Войти как тренер", new_coach_session_path, class: "btn btn-link"  %>
                 </ul>
               </ul>
           </li>

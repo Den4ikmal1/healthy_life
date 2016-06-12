@@ -12,8 +12,12 @@
     <tr>
       <td><h4><%= f.name %></h4></td>
       <td><h4><%= f.description%></h4></td>
-      <td><%= link_to "Просмотреть рацион", f, class: "btn btn-info" %></td>
-      <td><%= button_to "Удалить рацион", f, method: :delete, class: "btn btn-danger" %></td>
+      <td><%= link_to  f, class: "btn btn-info" do %>
+      <i class="glyphicon glyphicon-eye-open"></i>
+      <% end %></td>
+      <td><%= button_to f, method: :delete, class: "btn btn-danger" do %>
+      <i class="glyphicon glyphicon-remove-circle"></i>
+      <% end %></td></td>
     </tr>
   </tbody>
 <% end %>
